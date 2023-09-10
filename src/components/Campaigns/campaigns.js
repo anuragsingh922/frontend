@@ -13,7 +13,8 @@ const Campaigns = props => {
     };
 
     const getCallStatus = async (call, i) => {
-        const response = await axios.post('https://api.iamivy.online/vonage/voice/handleCallEvents', { uuid: call });
+        const response = await axios.post('http://localhost:8080/vonage/voice/handleCallEvents', { uuid: call });
+        // const response = await axios.post('https://api.iamivy.online/vonage/voice/handleCallEvents', { uuid: call });
 
         const dataTemp = [];
         // eslint-disable-next-line 
@@ -76,7 +77,8 @@ const Campaigns = props => {
             let i = 0;
             for (let record of data) {
                 let k = i;
-                await axios.post("https://api.iamivy.online/vonage/voice/handleCalls", { ...record, destination: props.destination })
+                await axios.post("http://localhost:8080/vonage/voice/handleCalls", { ...record, destination: props.destination })
+                // await axios.post("https://api.iamivy.online/vonage/voice/handleCalls", { ...record, destination: props.destination })
                 // await axios.post("https://api.iamivy.online/vonage/voice/handleCalls", record)
                     .then(async res => {
                         let callStatus;
